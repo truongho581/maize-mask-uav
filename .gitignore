@@ -1,0 +1,25 @@
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+.idea/
+
+# Local/RunPod runtime state and generated results
+/dataset/maizemask_v1.0_public_release/
+.venv/
+.venvs/
+cache/
+runtime_data/
+/.cache/
+/.runtime_data/
+results/
+run_outputs/
+outputs/
+logs/
+*.log
+*.pth
+*.pkl
+
+# Do not commit release archives into the source repository.
+*.zip

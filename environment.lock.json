@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "reference_runtime": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "torchvision": "0.23.0+cu128",
+    "transformers": "5.14.1",
+    "cuda_runtime_reported_by_torch": "12.8",
+    "reference_gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "upstream_sources": {
+    "Mask2Former": "9b0651c6c1d5b3af2e6da0589b719c514ec0d69a",
+    "detectron2": "a2f4a8771ab77e8411c26b27f24f9489a28a2453"
+  },
+  "pretrained_sources": {
+    "segformer_b0_encoder": {
+      "repository": "nvidia/mit-b0",
+      "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+      "config_sha256": "e2378ac7c7a6981d6bdd1d9ccf29b611264c382afce89c561f39c9291164ff91",
+      "pytorch_model_sha256": "4af8348c2a802bf76115d34797ff5ce1d9f110bb8593c22d9b66d8bd7fa227fc"
+    },
+    "maskrcnn_resnet50_fpn_coco": {
+      "url": "https://download.pytorch.org/models/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth",
+      "sha256": "bf2d0c1efbc936eeee2bc95a48e80ebc86b891f61b0106485937fc29f9315fc0"
+    },
+    "mask2former_r50_coco_instance": {
+      "url": "https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/instance/maskformer2_R50_bs16_50ep/model_final_3c8ec9.pkl",
+      "sha256": "c18e6551f9c0e951e7ee3a63eb5402b901612e4e141965d4719d13c69a97ec2a"
+    }
+  }
+}

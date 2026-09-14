@@ -10,7 +10,7 @@ from PIL import Image
 from torch.utils.data import DataLoader
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SRC_CODE = PROJECT_ROOT / "src"
 if str(SRC_CODE) not in sys.path:
     sys.path.insert(0, str(SRC_CODE))
@@ -30,7 +30,7 @@ from training.instance_metrics import (  # noqa: E402
     build_ignore_masks,
     evaluate_instance_records,
 )
-from eval_utils import (  # noqa: E402
+from utils import (  # noqa: E402
     BinaryMetricAccumulator,
     Timer,
     count_regression_metrics,

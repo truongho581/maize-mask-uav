@@ -13,7 +13,7 @@ from typing import Any
 import torch
 
 
-DEFAULT_OUTPUT_ROOT = Path("experiments/results/local_runs")
+DEFAULT_OUTPUT_ROOT = Path("results/local_runs")
 
 # The public v1.0 release materializes loader-compatible split trees at runtime.
 # Keep the registry empty so a manual invocation cannot silently select a

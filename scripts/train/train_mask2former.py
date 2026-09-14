@@ -18,7 +18,7 @@ import sys
 from typing import Any
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 UPSTREAM_ROOT = PROJECT_ROOT / "third_party" / "Mask2Former"
 DETECTRON2_ROOT = PROJECT_ROOT / "third_party" / "detectron2"
 STAGE_NAMES = ("maize2", "maize4", "maize6")

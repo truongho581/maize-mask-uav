@@ -88,7 +88,7 @@ def semantic_case(root: Path, data: Path, output: Path, model: str, seed: int, f
     command = [
         sys.executable,
         "-u",
-        "experiments/training_scripts/training/train_semantic_loso.py",
+        "scripts/train/train_semantic.py",
         "--dataset-root", str(data),
         "--dataset-key", "v1.0",
         "--protocol", "loso",
@@ -131,7 +131,7 @@ def maskrcnn_case(root: Path, data: Path, output: Path, fold: str, epochs: int) 
         "id": f"instance_maskrcnn_resnet50_fpn_{fold}_seed42",
         "cwd": root,
         "command": [
-            sys.executable, "-u", "experiments/training_scripts/training/train_maskrcnn_loso.py",
+            sys.executable, "-u", "scripts/train/train_maskrcnn.py",
             "--dataset-root", str(data), "--dataset-key", "v1.0",
             "--protocol", "loso", "--folds", fold,
             "--model", "maskrcnn_resnet50_fpn", "--epochs", str(epochs),
@@ -147,7 +147,7 @@ def maskrcnn_case(root: Path, data: Path, output: Path, fold: str, epochs: int) 
 def mask2former_cases(root: Path, data: Path, output: Path, fold: str, epochs: int) -> list[dict]:
     run_dir = output / "instance/mask2former_r50/v1.0/loso" / fold / "seed_42"
     base = [
-        sys.executable, "-u", "experiments/training_scripts/training/train_mask2former_r50_loso.py",
+        sys.executable, "-u", "scripts/train/train_mask2former.py",
         "--dataset-root", str(data), "--dataset-key", "v1.0",
         "--protocol", "loso", "--folds", fold, "--epochs", str(epochs),
         "--batch-size", "2", "--num-workers", "0", "--img-size", "640", "--seed", "42",

@@ -109,21 +109,20 @@ The exact commands are encoded in `scripts/train_paper.py`. The three trainers
 also support direct use when a single model/fold/seed is wanted:
 
 ```text
-experiments/training_scripts/training/train_semantic_loso.py
-experiments/training_scripts/training/train_maskrcnn_loso.py
-experiments/training_scripts/training/train_mask2former_r50_loso.py
+scripts/train/train_semantic.py
+scripts/train/train_maskrcnn.py
+scripts/train/train_mask2former.py
 ```
 
 Each trainer evaluates its selected checkpoint on the test partition and
 writes metrics automatically. Standalone checkpoint evaluation and result
-aggregation utilities are in `experiments/training_scripts/evaluation/`.
+aggregation utilities are in `scripts/evaluate/`.
 
 ## Repository layout
 
 ```text
-scripts/       environment setup, data preparation, pretrained weights, full training
+scripts/       setup, data preparation, full training and evaluation entry points
 src/           dataset loaders, architectures, losses and metrics
-experiments/   train/evaluation entry points
 third_party/   pinned, patched Detectron2 and Mask2Former source
 assets/        README overview figure
 dataset/       tracked placement instructions; authorized data are ignored by Git

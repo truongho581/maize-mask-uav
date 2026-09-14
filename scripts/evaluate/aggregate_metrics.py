@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--runs-root",
         type=Path,
-        default=Path("experiments/results/local_runs"),
+        default=Path("results/local_runs"),
     )
     parser.add_argument(
         "--glob",
@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("experiments/results/tables/post_eval_summary.csv"),
+        default=Path("results/tables/post_eval_summary.csv"),
     )
     return parser.parse_args()
 

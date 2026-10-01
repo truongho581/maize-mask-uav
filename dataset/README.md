@@ -1,21 +1,20 @@
-# Authorized MaizeMask v1.0 data
+# MaizeMask v1.0 dataset
 
 This directory is tracked so the expected dataset location is visible after a
-GitHub clone. The dataset itself is not in this repository.
+GitHub clone. The dataset itself is archived on Zenodo rather than duplicated
+in this repository.
 
 ## Dataset download
 
-The canonical dataset archive will be published on Zenodo. Replace these
-placeholders before making the repository public:
+Download the canonical `MaizeMask_v1.0.zip` archive from:
 
-- Zenodo record or DOI: `REPLACE_WITH_ZENODO_DATASET_URL`
-- Optional Google Drive mirror: `REPLACE_WITH_PUBLIC_GOOGLE_DRIVE_URL`
+- Zenodo record: <https://zenodo.org/records/23058644>
+- Version DOI: <https://doi.org/10.5281/zenodo.23058644>
 
-Zenodo should remain the citable source of record. A Google Drive URL, when
-provided, is only a download mirror and must serve the same versioned archive.
+The published archive is version 1.0.0 and is licensed under CC BY 4.0.
 
-After receiving an authorized MaizeMask v1.0 release from the authors, place
-the complete extracted directory here with this exact name:
+After downloading, place the complete extracted directory here with this exact
+name:
 
 ```text
 dataset/
@@ -58,5 +57,5 @@ python scripts/train_paper.py \
 ```
 
 The `.gitignore` rule excludes only
-`dataset/maizemask_v1.0_public_release/`; never add the authorized data,
+`dataset/maizemask_v1.0_public_release/`; never add the downloaded data,
 derived runtime data, raw captures, locations, checkpoints or results to Git.

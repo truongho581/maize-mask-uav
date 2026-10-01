@@ -11,10 +11,11 @@ to reproduce the reported protocol.
 complementary outputs: a semantic maize/weed map and visible-maize instances
 for stage-aware analysis.*
 
-The dataset is retained by the authors and is not distributed through GitHub.
-The local `dataset/maizemask_v1.0_public_release/` directory is ignored by
-Git. Authorized reviewers and research users can set a path to their supplied
-MaizeMask v1.0 release when preparing the split tree below. See
+The dataset is openly archived on Zenodo under CC BY 4.0 at
+[10.5281/zenodo.23058644](https://doi.org/10.5281/zenodo.23058644). It is not
+duplicated in GitHub: the local `dataset/maizemask_v1.0_public_release/`
+directory remains ignored by Git. Download and extract the versioned archive,
+then use that directory when preparing the split tree below. See
 [`dataset/README.md`](dataset/README.md) for the required local layout.
 
 ## Dataset at a glance
@@ -30,7 +31,7 @@ MaizeMask v1.0 release when preparing the split tree below. See
 | Primary evaluation | Three-fold leave-one-field-out (LOSO) |
 | Secondary evaluation | Spatially guarded fixed train/validation/test split |
 | Diagnostic control | Frozen random-tile split, assignment seed 42 |
-| Access | Data available from the authors to authorized reviewers and research users |
+| Access | Open dataset: [Zenodo DOI 10.5281/zenodo.23058644](https://doi.org/10.5281/zenodo.23058644) |
 
 Weed annotations represent observed cover regions rather than individual weed
 plants. The maize appearance groups are not biological V-stages. MaizeMask is
@@ -70,7 +71,7 @@ bash scripts/install.sh
 # Download the three pinned pretrained inputs and verify SHA-256 hashes.
 python scripts/prepare_pretrained_weights.py --cache-root .cache
 
-# Create the loader-compatible split tree from an authorized data release.
+# Create the loader-compatible split tree from the extracted Zenodo release.
 python scripts/prepare_data_splits.py \
   --release-root /path/to/maizemask_v1.0_release \
   --output-root .runtime_data
@@ -161,7 +162,7 @@ scripts/       setup, data preparation, full training and evaluation entry point
 src/           dataset loaders, architectures, losses and metrics
 third_party/   pinned, patched Detectron2 and Mask2Former source
 assets/        README overview figure
-dataset/       tracked placement instructions; authorized data are ignored by Git
+dataset/       tracked download/placement instructions; dataset files are ignored by Git
 ```
 
 Mask2Former is pinned to commit `9b0651c6c1d5b3af2e6da0589b719c514ec0d69a`
@@ -171,6 +172,7 @@ needed for installation or training and are intentionally excluded.
 
 ## License
 
-The MaizeMask code is released under the [MIT License](LICENSE). The dataset
-is not distributed with this repository and remains subject to the authors'
-data-access process. Vendored third-party components retain their own licenses.
+The MaizeMask code is released under the [MIT License](LICENSE). The dataset is
+archived separately on Zenodo under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Vendored third-party
+components retain their own licenses.

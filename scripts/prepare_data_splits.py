@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create loader-compatible LOSO/fixed trees without duplicating image bytes."""
+"""Create loader-compatible public protocol trees without duplicating image bytes."""
 
 from __future__ import annotations
 
@@ -82,6 +82,13 @@ def main() -> None:
             plans.append((release / "annotations/loso" / fold / f"{split}.json", output / "loso" / fold / split))
     for split in ("train", "valid", "test"):
         plans.append((release / "annotations/standard" / f"{split}.json", output / "standard" / split))
+    for split in ("train", "valid", "test"):
+        plans.append(
+            (
+                release / "annotations/random_tile_control" / f"{split}.json",
+                output / "random_tile_control" / split,
+            )
+        )
 
     report = {}
     if args.verify_only:

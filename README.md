@@ -29,12 +29,19 @@ MaizeMask v1.0 release when preparing the split tree below. See
 | Ambiguity policy | `maize-u` contributes to semantic maize but is ignored for stage-specific instance evaluation |
 | Primary evaluation | Three-fold leave-one-field-out (LOSO) |
 | Secondary evaluation | Spatially guarded fixed train/validation/test split |
+| Diagnostic control | Frozen random-tile split, assignment seed 42 |
 | Access | Data available from the authors to authorized reviewers and research users |
 
 Weed annotations represent observed cover regions rather than individual weed
 plants. The maize appearance groups are not biological V-stages. MaizeMask is
 an application-oriented UAV RGB benchmark for hybrid segmentation; it does not
 claim field-validated spraying or geographic/multi-season generalization.
+
+Public image names follow `MM_D<field>_H<height>_S<source>_T<tile>.png`, for
+example `MM_D1_H05_S003_T01.png`. The anonymized source alias and tile index
+make source-aware resplitting possible without exposing raw capture names or
+coordinates. Stable numeric image IDs remain in the COCO file and
+`metadata/images.csv`.
 
 ## Requirements
 
@@ -74,6 +81,35 @@ python scripts/train_paper.py \
   --cache-root .cache \
   --output-root results/paper_run
 ```
+
+The preparation command also materializes `.runtime_data/standard` and
+`.runtime_data/random_tile_control`. The latter is an intentionally
+leakage-prone diagnostic control and is not a recommended benchmark split.
+
+## Reproduce the split-leakage control
+
+The paper's split-sensitivity experiment holds the ImageNet-pretrained
+SegFormer-B0 recipe and model seeds fixed while changing only the frozen
+partition policy. Run its six configurations with:
+
+```bash
+python scripts/train_split_leakage_control.py \
+  --release-root dataset/maizemask_v1.0_public_release \
+  --dataset-root .runtime_data \
+  --output-root results/paper_semantic_maizemask_v1_split_leakage_control
+```
+
+This executes the spatial-guard and random-tile arms for seeds `42`, `123` and
+`3407`, then verifies that all six configurations share one training contract.
+It also checks that the protocols contain the same 332 tiles and matched
+field-by-partition counts, while only the random control permits source/GPS
+groups to cross partitions. The generated `summary/` directory contains the
+seed metrics, paired deltas, protocol-integrity record and a Markdown report.
+
+The control is descriptive for one frozen random assignment. LOSO remains the
+primary protocol for generalization to unseen fields. Generated results and
+checkpoints are ignored by Git; this repository contains the code and frozen
+manifests needed to reproduce them, not a committed copy of every run output.
 
 `train_paper.py` executes the complete protocol directly—there is no one-epoch
 validation matrix in this public repository. It runs 42 training
